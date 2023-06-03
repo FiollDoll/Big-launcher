@@ -1,0 +1,10 @@
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.exe.config
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.exe
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.pdb
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.AssemblyReference.cache
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.MainForm.resources
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.Properties.Resources.resources
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.GenerateResource.cache
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.CoreCompileInputs.cache
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.exe
+H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.pdb
