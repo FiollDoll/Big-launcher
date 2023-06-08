@@ -2,38 +2,35 @@
 <ButtonsInScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Collection>
     <Item>
-      <name>buttonActionping</name>
+      <name>ping</name>
       <command>cmd</command>
       <action>ping</action>
+      <optionHave>true</optionHave>
+      <otherOptionHave>true</otherOptionHave>
       <position>
         <x>10</x>
         <y>20</y>
       </position>
     </Item>
     <Item>
-      <name>buttonActiontest</name>
-      <command>powerShell</command>
-      <action>test</action>
+      <name>C:\Users\artem\OneDrive\Документы\Screenshot_1.png</name>
+      <command>app</command>
+      <action>C:\Users\artem\OneDrive\Документы\Screenshot_1.png</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
       <position>
         <x>90</x>
         <y>20</y>
       </position>
     </Item>
     <Item>
-      <name>buttonActionH:\project\Hiemholf\new_img1.jpg</name>
-      <command>app</command>
-      <action>H:\project\Hiemholf\new_img1.jpg</action>
+      <name>help</name>
+      <command>cmd</command>
+      <action>ping</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
       <position>
         <x>170</x>
-        <y>20</y>
-      </position>
-    </Item>
-    <Item>
-      <name>buttonActionH:\project\Hiemholf\main.py</name>
-      <command>app</command>
-      <action>H:\project\Hiemholf\main.py</action>
-      <position>
-        <x>250</x>
         <y>20</y>
       </position>
     </Item>

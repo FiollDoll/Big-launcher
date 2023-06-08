@@ -25,6 +25,7 @@ namespace SuperLauncher
             panelChoice.Visible = false;
             panelCreate.Visible = false;
             panelActivate.Visible = false;
+            buttonPath.Visible = false;
             buttonsInScene.buttons = new List<ButtonInfo>();
 
             // Десериализация
@@ -43,8 +44,8 @@ namespace SuperLauncher
                 {
                     Button button = new Button();
                     groupButtons.Controls.Add(button);
-                    button.Name = $"buttonAction{buttonsInScene.buttons[i].action}";
-                    button.Text = buttonsInScene.buttons[i].action;
+                    button.Name = buttonsInScene.buttons[i].name;
+                    button.Text = buttonsInScene.buttons[i].name;
                     button.Location = new Point(buttonsInScene.buttons[i].position.x, buttonsInScene.buttons[i].position.y);
 
                     button.Click += ButtonOnClick;
@@ -58,34 +59,44 @@ namespace SuperLauncher
         }
 
         private void buttonAdd_Click(object sender, EventArgs e) => panelChoice.Visible = true;
-        
+
 
         private void buttonExit_Click(object sender, EventArgs e) => panelChoice.Visible = false;
-        
+
 
         // CMD
         private void buttonCmd_Click(object sender, EventArgs e)
         {
             panelChoice.Visible = false;
             panelCreate.Visible = true;
+            labelNameCommand.Text = "Команда*";
+
             command = "cmd";
         }
         private void buttonPowerShell_Click(object sender, EventArgs e)
         {
             panelChoice.Visible = false;
             panelCreate.Visible = true;
+            labelNameCommand.Text = "Команда*";
             command = "powerShell";
         }
         private void buttonApp_Click(object sender, EventArgs e)
         {
             panelChoice.Visible = false;
+            panelCreate.Visible = true;
+            labelNameCommand.Text = "Путь*";
+            buttonPath.Visible = true;
+
+        }
+        private void buttonPath_Click(object sender, EventArgs e)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             // Открываем окно диалога с пользователем.
             openFileDialog.ShowDialog();
             var extension = Path.GetExtension(openFileDialog.FileName);
             command = "app";
-            CreateButton(openFileDialog.FileName, command);
+            textBoxCommand.Text = openFileDialog.FileName;
         }
 
         private void CreateButton(string action, string command)
@@ -95,16 +106,18 @@ namespace SuperLauncher
                 panelCreate.Visible = false;
                 Button button = new Button();
                 groupButtons.Controls.Add(button);
-                button.Name = $"buttonAction{action}";
-                button.Text = action;
+                if (textBoxNameCommand.Text == "")
+                    textBoxNameCommand.Text = action;
+                button.Name = textBoxNameCommand.Text;
+                button.Text = textBoxNameCommand.Text;
                 if (buttonsInScene.buttons.Count == 0)
-                    buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, button.Text, 10, 20));
+                    buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(10, 20), checkBoxOption.Checked, checkBoxOtherOption.Checked));
                 else
                 {
                     if (buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x >= 250) // Новая строка
-                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, button.Text, 10, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y + 50));
+                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(10, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y + 50), checkBoxOption.Checked, checkBoxOtherOption.Checked));
                     else
-                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, button.Text, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x + 80, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y));
+                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x + 80, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y), checkBoxOption.Checked, checkBoxOtherOption.Checked));
                 }
 
                 button.Location = new Point(buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y);
@@ -115,17 +128,38 @@ namespace SuperLauncher
 
                 using (FileStream fs = new FileStream(@"buttons.xml", FileMode.OpenOrCreate))
                     xmlSerializer.Serialize(fs, buttonsInScene);
+
+                textBoxNameCommand.Text = "";
+                checkBoxOption.Checked = false;
+                checkBoxOtherOption.Visible = false;
+                checkBoxOtherOption.Checked = false;
+                action = "";
+                textBoxCommand.Text = "";
+
             }
             else
                 MessageBox.Show("Не вписана команда!");
+
+            buttonPath.Visible = false;
         }
+
+        public void DeleteAllButtons()
+        {
+            for (int i = 0; i < buttonsInScene.buttons.Count; i++)
+            {
+                groupButtons.Controls.Remove(groupButtons.Controls.Find(buttonsInScene.buttons[i].name, false)[0]);
+                buttonsInScene.buttons.RemoveAt(i);
+            }
+        }
+
         private void ButtonOnClick(object sender, EventArgs e)
         {
             totalAction = (sender as Button).Text;
             bool app = false;
-            for(int i = 0; i < buttonsInScene.buttons.Count; i++)
+
+            for (int i = 0; i < buttonsInScene.buttons.Count; i++)
             {
-                if (totalAction == buttonsInScene.buttons[i].action)
+                if (totalAction == buttonsInScene.buttons[i].name)
                 {
                     if (buttonsInScene.buttons[i].command == "app")
                     {
@@ -135,37 +169,50 @@ namespace SuperLauncher
                     }
                 }
             }
+            for (int i = 0; i < buttonsInScene.buttons.Count; i++)
+            {
+                if (totalAction == buttonsInScene.buttons[i].name)
+                {
+                    if (!app)
+                    {
+                        panelActivate.Visible = true;
+                        textBoxInfo.Visible = buttonsInScene.buttons[i].optionHave;
+                        labelOption.Visible = buttonsInScene.buttons[i].optionHave;
+                        textBoxOtherInfo.Visible = buttonsInScene.buttons[i].otherOptionHave;
+                        labelOtherOption.Visible = buttonsInScene.buttons[i].otherOptionHave;
+                        break;
+                    }
+                }
+            }
 
-            if (!app)
-                panelActivate.Visible = true;
-
+            Console.WriteLine(totalAction);
         }
 
         private void buttonCreate_Click(object sender, EventArgs e) => CreateButton(textBoxCommand.Text, command);
-        
+
 
 
         private void buttonSubExit_Click(object sender, EventArgs e) => panelCreate.Visible = false;
-        
 
-        private void buttonActivate_Click(object sender, EventArgs e) // Сделать проверку(СЕЙЧАС CMD)
+
+        private void buttonActivate_Click(object sender, EventArgs e)
         {
             ProcessStartInfo psi;
             for (int i = 0; i < buttonsInScene.buttons.Count; i++)
             {
-                if (totalAction == buttonsInScene.buttons[i].action)
+                if (totalAction == buttonsInScene.buttons[i].name)
                 {
-                    if (buttonsInScene.buttons[i].command == "app")         
+                    if (buttonsInScene.buttons[i].command == "app")
                         break;
                     else if (buttonsInScene.buttons[i].command == "cmd")
                     {
-                        psi = new ProcessStartInfo("cmd", $@"/k {totalAction} {textBoxInfo.Text}");
+                        psi = new ProcessStartInfo("cmd", $@"/k {buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
                         Process.Start(psi);
                         break;
                     }
                     else if (buttonsInScene.buttons[i].command == "powerShell")
                     {
-                        psi = new ProcessStartInfo("PowerShell", $@"/k {totalAction} {textBoxInfo.Text}");
+                        psi = new ProcessStartInfo("PowerShell", $@"{buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
                         Process.Start(psi);
                         break;
                     }
@@ -175,5 +222,17 @@ namespace SuperLauncher
         }
 
         private void buttonActivateMenuExit_Click(object sender, EventArgs e) => panelActivate.Visible = false;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DeleteAllButtons();
+            DeleteAllButtons();
+            DeleteAllButtons();
+        }
+
+        private void checkBoxOption_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxOtherOption.Visible = checkBoxOption.Checked;
+        }
     }
 }

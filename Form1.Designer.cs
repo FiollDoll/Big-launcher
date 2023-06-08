@@ -36,6 +36,9 @@ namespace SuperLauncher
             this.panelChoice = new System.Windows.Forms.Panel();
             this.buttonApp = new System.Windows.Forms.Button();
             this.panelCreate = new System.Windows.Forms.Panel();
+            this.buttonPath = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxNameCommand = new System.Windows.Forms.TextBox();
             this.labelNameCommand = new System.Windows.Forms.Label();
             this.textBoxCommand = new System.Windows.Forms.TextBox();
             this.buttonCreate = new System.Windows.Forms.Button();
@@ -43,10 +46,15 @@ namespace SuperLauncher
             this.button3 = new System.Windows.Forms.Button();
             this.groupButtons = new System.Windows.Forms.GroupBox();
             this.panelActivate = new System.Windows.Forms.Panel();
-            this.labelActionSecond = new System.Windows.Forms.Label();
+            this.labelOption = new System.Windows.Forms.Label();
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.buttonActivate = new System.Windows.Forms.Button();
             this.buttonActivateMenuExit = new System.Windows.Forms.Button();
+            this.checkBoxOption = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelOtherOption = new System.Windows.Forms.Label();
+            this.textBoxOtherInfo = new System.Windows.Forms.TextBox();
+            this.checkBoxOtherOption = new System.Windows.Forms.CheckBox();
             this.panelChoice.SuspendLayout();
             this.panelCreate.SuspendLayout();
             this.panelActivate.SuspendLayout();
@@ -117,27 +125,58 @@ namespace SuperLauncher
             // panelCreate
             // 
             this.panelCreate.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelCreate.Controls.Add(this.checkBoxOtherOption);
+            this.panelCreate.Controls.Add(this.checkBoxOption);
+            this.panelCreate.Controls.Add(this.buttonPath);
+            this.panelCreate.Controls.Add(this.label1);
+            this.panelCreate.Controls.Add(this.textBoxNameCommand);
             this.panelCreate.Controls.Add(this.labelNameCommand);
             this.panelCreate.Controls.Add(this.textBoxCommand);
             this.panelCreate.Controls.Add(this.buttonCreate);
             this.panelCreate.Controls.Add(this.buttonSubExit);
             this.panelCreate.Location = new System.Drawing.Point(396, 27);
             this.panelCreate.Name = "panelCreate";
-            this.panelCreate.Size = new System.Drawing.Size(392, 133);
+            this.panelCreate.Size = new System.Drawing.Size(392, 174);
             this.panelCreate.TabIndex = 6;
+            // 
+            // buttonPath
+            // 
+            this.buttonPath.Location = new System.Drawing.Point(244, 81);
+            this.buttonPath.Name = "buttonPath";
+            this.buttonPath.Size = new System.Drawing.Size(20, 23);
+            this.buttonPath.TabIndex = 8;
+            this.buttonPath.Text = "Создать";
+            this.buttonPath.UseVisualStyleBackColor = true;
+            this.buttonPath.Click += new System.EventHandler(this.buttonPath_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(128, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Имя";
+            // 
+            // textBoxNameCommand
+            // 
+            this.textBoxNameCommand.Location = new System.Drawing.Point(48, 33);
+            this.textBoxNameCommand.Name = "textBoxNameCommand";
+            this.textBoxNameCommand.Size = new System.Drawing.Size(190, 20);
+            this.textBoxNameCommand.TabIndex = 6;
             // 
             // labelNameCommand
             // 
             this.labelNameCommand.AutoSize = true;
-            this.labelNameCommand.Location = new System.Drawing.Point(102, 12);
+            this.labelNameCommand.Location = new System.Drawing.Point(105, 58);
             this.labelNameCommand.Name = "labelNameCommand";
-            this.labelNameCommand.Size = new System.Drawing.Size(52, 13);
+            this.labelNameCommand.Size = new System.Drawing.Size(56, 13);
             this.labelNameCommand.TabIndex = 5;
-            this.labelNameCommand.Text = "Команда";
+            this.labelNameCommand.Text = "Команда*";
             // 
             // textBoxCommand
             // 
-            this.textBoxCommand.Location = new System.Drawing.Point(45, 35);
+            this.textBoxCommand.Location = new System.Drawing.Point(48, 81);
             this.textBoxCommand.Name = "textBoxCommand";
             this.textBoxCommand.Size = new System.Drawing.Size(190, 20);
             this.textBoxCommand.TabIndex = 4;
@@ -182,23 +221,25 @@ namespace SuperLauncher
             // panelActivate
             // 
             this.panelActivate.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelActivate.Controls.Add(this.labelActionSecond);
+            this.panelActivate.Controls.Add(this.labelOtherOption);
+            this.panelActivate.Controls.Add(this.textBoxOtherInfo);
+            this.panelActivate.Controls.Add(this.labelOption);
             this.panelActivate.Controls.Add(this.textBoxInfo);
             this.panelActivate.Controls.Add(this.buttonActivate);
             this.panelActivate.Controls.Add(this.buttonActivateMenuExit);
-            this.panelActivate.Location = new System.Drawing.Point(396, 166);
+            this.panelActivate.Location = new System.Drawing.Point(396, 178);
             this.panelActivate.Name = "panelActivate";
             this.panelActivate.Size = new System.Drawing.Size(392, 133);
             this.panelActivate.TabIndex = 7;
             // 
-            // labelActionSecond
+            // labelOption
             // 
-            this.labelActionSecond.AutoSize = true;
-            this.labelActionSecond.Location = new System.Drawing.Point(102, 12);
-            this.labelActionSecond.Name = "labelActionSecond";
-            this.labelActionSecond.Size = new System.Drawing.Size(55, 13);
-            this.labelActionSecond.TabIndex = 5;
-            this.labelActionSecond.Text = "Значение";
+            this.labelOption.AutoSize = true;
+            this.labelOption.Location = new System.Drawing.Point(102, 12);
+            this.labelOption.Name = "labelOption";
+            this.labelOption.Size = new System.Drawing.Size(55, 13);
+            this.labelOption.TabIndex = 5;
+            this.labelOption.Text = "Значение";
             // 
             // textBoxInfo
             // 
@@ -227,12 +268,61 @@ namespace SuperLauncher
             this.buttonActivateMenuExit.UseVisualStyleBackColor = true;
             this.buttonActivateMenuExit.Click += new System.EventHandler(this.buttonActivateMenuExit_Click);
             // 
+            // checkBoxOption
+            // 
+            this.checkBoxOption.AutoSize = true;
+            this.checkBoxOption.Location = new System.Drawing.Point(48, 107);
+            this.checkBoxOption.Name = "checkBoxOption";
+            this.checkBoxOption.Size = new System.Drawing.Size(128, 17);
+            this.checkBoxOption.TabIndex = 9;
+            this.checkBoxOption.Text = "Основной параметр";
+            this.checkBoxOption.UseVisualStyleBackColor = true;
+            this.checkBoxOption.CheckedChanged += new System.EventHandler(this.checkBoxOption_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 400);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelOtherOption
+            // 
+            this.labelOtherOption.AutoSize = true;
+            this.labelOtherOption.Location = new System.Drawing.Point(70, 58);
+            this.labelOtherOption.Name = "labelOtherOption";
+            this.labelOtherOption.Size = new System.Drawing.Size(143, 13);
+            this.labelOtherOption.TabIndex = 7;
+            this.labelOtherOption.Text = "Дополнительное значение";
+            // 
+            // textBoxOtherInfo
+            // 
+            this.textBoxOtherInfo.Location = new System.Drawing.Point(45, 81);
+            this.textBoxOtherInfo.Name = "textBoxOtherInfo";
+            this.textBoxOtherInfo.Size = new System.Drawing.Size(190, 20);
+            this.textBoxOtherInfo.TabIndex = 6;
+            // 
+            // checkBoxOtherOption
+            // 
+            this.checkBoxOtherOption.AutoSize = true;
+            this.checkBoxOtherOption.Location = new System.Drawing.Point(64, 128);
+            this.checkBoxOtherOption.Name = "checkBoxOtherOption";
+            this.checkBoxOtherOption.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxOtherOption.TabIndex = 10;
+            this.checkBoxOtherOption.Text = "Дополнительные параметр";
+            this.checkBoxOtherOption.UseVisualStyleBackColor = true;
+            this.checkBoxOtherOption.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelActivate);
             this.Controls.Add(this.groupButtons);
             this.Controls.Add(this.buttonAdd);
@@ -270,11 +360,19 @@ namespace SuperLauncher
         private System.Windows.Forms.TextBox textBoxCommand;
         private System.Windows.Forms.GroupBox groupButtons;
         private System.Windows.Forms.Panel panelActivate;
-        private System.Windows.Forms.Label labelActionSecond;
+        private System.Windows.Forms.Label labelOption;
         private System.Windows.Forms.TextBox textBoxInfo;
         private System.Windows.Forms.Button buttonActivate;
         private System.Windows.Forms.Button buttonActivateMenuExit;
         private System.Windows.Forms.Button buttonApp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxNameCommand;
+        private System.Windows.Forms.Button buttonPath;
+        private System.Windows.Forms.CheckBox checkBoxOption;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBoxOtherOption;
+        private System.Windows.Forms.Label labelOtherOption;
+        private System.Windows.Forms.TextBox textBoxOtherInfo;
     }
 }
 
