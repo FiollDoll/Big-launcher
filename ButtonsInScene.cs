@@ -18,6 +18,7 @@ namespace Buttons
 
 	public class ButtonInfo
 	{
+		public int id;
 		public string name;
 		public string command;
 		public string action;
@@ -31,12 +32,18 @@ namespace Buttons
 
         }
 
-		public ButtonInfo(string nameButton, string commandButton, string textButton, string actionButton, ButtonLocation location, bool option = false, bool otherOptionsHave = false)
+		public ButtonInfo(string nameButton)
+        {
+			name = nameButton;
+        }
+
+		public ButtonInfo(int idButton, string nameButton, string commandButton, string textButton, string actionButton, ButtonLocation pos, bool option = false, bool otherOptionsHave = false)
 		{
+			id = idButton;
 			name = nameButton;
 			command = commandButton;
 			action = actionButton;
-			position = location;
+			position = pos;
 			optionHave = option;
 			otherOptionHave = otherOptionsHave;
 		}
@@ -44,17 +51,18 @@ namespace Buttons
 
 	public class ButtonLocation
 	{
-		public int x, y;
+		public int x, y, page;
 
 		public ButtonLocation()
         {
 
         }
 
-		public ButtonLocation(int posX, int posY)
+		public ButtonLocation(int pageButton, int posX, int posY)
         {
 			x = posX;
 			y = posY;
+			page = pageButton;
         }
 	}
 }

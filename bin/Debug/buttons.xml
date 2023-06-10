@@ -2,6 +2,7 @@
 <ButtonsInScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Collection>
     <Item>
+      <id>0</id>
       <name>ping</name>
       <command>cmd</command>
       <action>ping</action>
@@ -10,28 +11,59 @@
       <position>
         <x>10</x>
         <y>20</y>
+        <page>0</page>
       </position>
     </Item>
     <Item>
-      <name>C:\Users\artem\OneDrive\Документы\Screenshot_1.png</name>
-      <command>app</command>
-      <action>C:\Users\artem\OneDrive\Документы\Screenshot_1.png</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>90</x>
-        <y>20</y>
-      </position>
-    </Item>
-    <Item>
-      <name>help</name>
+      <id>1</id>
+      <name>pingHelp</name>
       <command>cmd</command>
       <action>ping</action>
       <optionHave>false</optionHave>
       <otherOptionHave>false</otherOptionHave>
       <position>
-        <x>170</x>
+        <x>90</x>
         <y>20</y>
+        <page>0</page>
+      </position>
+    </Item>
+    <Item>
+      <id>0</id>
+      <name>1</name>
+      <command>app</command>
+      <action>C:\Users\artem\OneDrive\Изображения\Roblox\RobloxScreenShot20230312_204106058.png</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>10</x>
+        <y>20</y>
+        <page>1</page>
+      </position>
+    </Item>
+    <Item>
+      <id>1</id>
+      <name>2</name>
+      <command>app</command>
+      <action>C:\Users\artem\OneDrive\Изображения\Roblox\RobloxScreenShot20230320_191028188.png</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>90</x>
+        <y>20</y>
+        <page>1</page>
+      </position>
+    </Item>
+    <Item>
+      <id>0</id>
+      <name>ps</name>
+      <command>powerShell</command>
+      <action>ping</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>10</x>
+        <y>20</y>
+        <page>2</page>
       </position>
     </Item>
   </Collection>

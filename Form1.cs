@@ -18,6 +18,7 @@ namespace SuperLauncher
         public ButtonsInScene buttonsInScene = new ButtonsInScene();
         public string totalAction;
         public string command;
+        public int pageTotal;
 
         public MainForm()
         {
@@ -51,6 +52,8 @@ namespace SuperLauncher
                     button.Click += ButtonOnClick;
                 }
             }
+
+            EditPage(0);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -99,28 +102,52 @@ namespace SuperLauncher
             textBoxCommand.Text = openFileDialog.FileName;
         }
 
-        private void CreateButton(string action, string command)
+        private void CreateButton(string action, string command, bool newButton = false, int id = 0)
         {
             if (action != "")
             {
                 panelCreate.Visible = false;
                 Button button = new Button();
                 groupButtons.Controls.Add(button);
-                if (textBoxNameCommand.Text == "")
-                    textBoxNameCommand.Text = action;
-                button.Name = textBoxNameCommand.Text;
-                button.Text = textBoxNameCommand.Text;
-                if (buttonsInScene.buttons.Count == 0)
-                    buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(10, 20), checkBoxOption.Checked, checkBoxOtherOption.Checked));
-                else
+
+                if (id == 0)
                 {
-                    if (buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x >= 250) // Новая строка
-                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(10, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y + 50), checkBoxOption.Checked, checkBoxOtherOption.Checked));
-                    else
-                        buttonsInScene.buttons.Add(new ButtonInfo(button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x + 80, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y), checkBoxOption.Checked, checkBoxOtherOption.Checked));
+                    int buttonsCount = 0;
+                    for (int i = 0; i < buttonsInScene.buttons.Count; i++)
+                    {
+                        if (buttonsInScene.buttons[i].position.page == pageTotal)
+                            buttonsCount++;
+                    }
+                    id = buttonsCount;
                 }
 
-                button.Location = new Point(buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y);
+                if (newButton)
+                {
+                    if (textBoxNameCommand.Text == "")
+                        textBoxNameCommand.Text = action;
+                    button.Name = textBoxNameCommand.Text;
+                    button.Text = textBoxNameCommand.Text;
+                    if (id == 0)
+                        buttonsInScene.buttons.Add(new ButtonInfo(id, button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(pageTotal, 10, 20), checkBoxOption.Checked, checkBoxOtherOption.Checked));
+                    else
+                    {
+                        if (buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x >= 250) // Новая строка
+                            buttonsInScene.buttons.Add(new ButtonInfo(id, button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(pageTotal, 10, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y + 50), checkBoxOption.Checked, checkBoxOtherOption.Checked));
+
+                        else
+                            buttonsInScene.buttons.Add(new ButtonInfo(id, button.Name, command, textBoxNameCommand.Text, action, new ButtonLocation(pageTotal, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x + 80, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y), checkBoxOption.Checked, checkBoxOtherOption.Checked));
+
+                        button.Location = new Point(buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.x, buttonsInScene.buttons[buttonsInScene.buttons.Count - 1].position.y);
+                    }
+                }
+                else
+                {
+                    button.Name = buttonsInScene.buttons[id].name;
+                    button.Text = buttonsInScene.buttons[id].name;
+                    button.Location = new Point(buttonsInScene.buttons[id].position.x, buttonsInScene.buttons[id].position.y);
+                }
+
+
 
                 button.Click += ButtonOnClick;
 
@@ -141,15 +168,6 @@ namespace SuperLauncher
                 MessageBox.Show("Не вписана команда!");
 
             buttonPath.Visible = false;
-        }
-
-        public void DeleteAllButtons()
-        {
-            for (int i = 0; i < buttonsInScene.buttons.Count; i++)
-            {
-                groupButtons.Controls.Remove(groupButtons.Controls.Find(buttonsInScene.buttons[i].name, false)[0]);
-                buttonsInScene.buttons.RemoveAt(i);
-            }
         }
 
         private void ButtonOnClick(object sender, EventArgs e)
@@ -188,7 +206,7 @@ namespace SuperLauncher
             Console.WriteLine(totalAction);
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e) => CreateButton(textBoxCommand.Text, command);
+        private void buttonCreate_Click(object sender, EventArgs e) => CreateButton(textBoxCommand.Text, command, true);
 
 
 
@@ -223,12 +241,38 @@ namespace SuperLauncher
 
         private void buttonActivateMenuExit_Click(object sender, EventArgs e) => panelActivate.Visible = false;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void EditPage(int pageEdit)
         {
-            DeleteAllButtons();
-            DeleteAllButtons();
-            DeleteAllButtons();
+            pageTotal += pageEdit;
+
+            for (int i = 0; i < buttonsInScene.buttons.Count; i++) // Очистка
+            {
+                if (groupButtons.Controls.ContainsKey(buttonsInScene.buttons[i].name))
+                {
+                    var button = groupButtons.Controls[buttonsInScene.buttons[i].name];
+                    //(button as Button).Visible = false;
+                    groupButtons.Controls.Remove(button);
+                }
+            }
+
+            for (int i = 0; i < buttonsInScene.buttons.Count; i++)
+            {
+                if (buttonsInScene.buttons[i].position.page == pageTotal)
+                    CreateButton(buttonsInScene.buttons[i].action, buttonsInScene.buttons[i].command, false, i);
+            }
+
+            if (pageTotal == 0)
+                buttonBackPage.Visible = false;
+            else
+                buttonBackPage.Visible = true;
+
+            labelPage.Text = (pageTotal + 1).ToString();
         }
+
+
+        private void buttonNextPage_Click(object sender, EventArgs e) => EditPage(+1);
+
+        private void buttonBackPage_Click(object sender, EventArgs e) => EditPage(-1);
 
         private void checkBoxOption_CheckedChanged(object sender, EventArgs e)
         {

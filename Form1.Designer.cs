@@ -36,6 +36,8 @@ namespace SuperLauncher
             this.panelChoice = new System.Windows.Forms.Panel();
             this.buttonApp = new System.Windows.Forms.Button();
             this.panelCreate = new System.Windows.Forms.Panel();
+            this.checkBoxOtherOption = new System.Windows.Forms.CheckBox();
+            this.checkBoxOption = new System.Windows.Forms.CheckBox();
             this.buttonPath = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNameCommand = new System.Windows.Forms.TextBox();
@@ -46,15 +48,15 @@ namespace SuperLauncher
             this.button3 = new System.Windows.Forms.Button();
             this.groupButtons = new System.Windows.Forms.GroupBox();
             this.panelActivate = new System.Windows.Forms.Panel();
+            this.labelOtherOption = new System.Windows.Forms.Label();
+            this.textBoxOtherInfo = new System.Windows.Forms.TextBox();
             this.labelOption = new System.Windows.Forms.Label();
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.buttonActivate = new System.Windows.Forms.Button();
             this.buttonActivateMenuExit = new System.Windows.Forms.Button();
-            this.checkBoxOption = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelOtherOption = new System.Windows.Forms.Label();
-            this.textBoxOtherInfo = new System.Windows.Forms.TextBox();
-            this.checkBoxOtherOption = new System.Windows.Forms.CheckBox();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.buttonBackPage = new System.Windows.Forms.Button();
+            this.labelPage = new System.Windows.Forms.Label();
             this.panelChoice.SuspendLayout();
             this.panelCreate.SuspendLayout();
             this.panelActivate.SuspendLayout();
@@ -138,6 +140,28 @@ namespace SuperLauncher
             this.panelCreate.Name = "panelCreate";
             this.panelCreate.Size = new System.Drawing.Size(392, 174);
             this.panelCreate.TabIndex = 6;
+            // 
+            // checkBoxOtherOption
+            // 
+            this.checkBoxOtherOption.AutoSize = true;
+            this.checkBoxOtherOption.Location = new System.Drawing.Point(64, 128);
+            this.checkBoxOtherOption.Name = "checkBoxOtherOption";
+            this.checkBoxOtherOption.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxOtherOption.TabIndex = 10;
+            this.checkBoxOtherOption.Text = "Дополнительные параметр";
+            this.checkBoxOtherOption.UseVisualStyleBackColor = true;
+            this.checkBoxOtherOption.Visible = false;
+            // 
+            // checkBoxOption
+            // 
+            this.checkBoxOption.AutoSize = true;
+            this.checkBoxOption.Location = new System.Drawing.Point(48, 107);
+            this.checkBoxOption.Name = "checkBoxOption";
+            this.checkBoxOption.Size = new System.Drawing.Size(128, 17);
+            this.checkBoxOption.TabIndex = 9;
+            this.checkBoxOption.Text = "Основной параметр";
+            this.checkBoxOption.UseVisualStyleBackColor = true;
+            this.checkBoxOption.CheckedChanged += new System.EventHandler(this.checkBoxOption_CheckedChanged);
             // 
             // buttonPath
             // 
@@ -232,6 +256,22 @@ namespace SuperLauncher
             this.panelActivate.Size = new System.Drawing.Size(392, 133);
             this.panelActivate.TabIndex = 7;
             // 
+            // labelOtherOption
+            // 
+            this.labelOtherOption.AutoSize = true;
+            this.labelOtherOption.Location = new System.Drawing.Point(70, 58);
+            this.labelOtherOption.Name = "labelOtherOption";
+            this.labelOtherOption.Size = new System.Drawing.Size(143, 13);
+            this.labelOtherOption.TabIndex = 7;
+            this.labelOtherOption.Text = "Дополнительное значение";
+            // 
+            // textBoxOtherInfo
+            // 
+            this.textBoxOtherInfo.Location = new System.Drawing.Point(45, 81);
+            this.textBoxOtherInfo.Name = "textBoxOtherInfo";
+            this.textBoxOtherInfo.Size = new System.Drawing.Size(190, 20);
+            this.textBoxOtherInfo.TabIndex = 6;
+            // 
             // labelOption
             // 
             this.labelOption.AutoSize = true;
@@ -268,53 +308,34 @@ namespace SuperLauncher
             this.buttonActivateMenuExit.UseVisualStyleBackColor = true;
             this.buttonActivateMenuExit.Click += new System.EventHandler(this.buttonActivateMenuExit_Click);
             // 
-            // checkBoxOption
+            // buttonNextPage
             // 
-            this.checkBoxOption.AutoSize = true;
-            this.checkBoxOption.Location = new System.Drawing.Point(48, 107);
-            this.checkBoxOption.Name = "checkBoxOption";
-            this.checkBoxOption.Size = new System.Drawing.Size(128, 17);
-            this.checkBoxOption.TabIndex = 9;
-            this.checkBoxOption.Text = "Основной параметр";
-            this.checkBoxOption.UseVisualStyleBackColor = true;
-            this.checkBoxOption.CheckedChanged += new System.EventHandler(this.checkBoxOption_CheckedChanged);
+            this.buttonNextPage.Location = new System.Drawing.Point(229, 400);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(75, 23);
+            this.buttonNextPage.TabIndex = 9;
+            this.buttonNextPage.Text = ">";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
-            // button1
+            // buttonBackPage
             // 
-            this.button1.Location = new System.Drawing.Point(239, 400);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonBackPage.Location = new System.Drawing.Point(67, 400);
+            this.buttonBackPage.Name = "buttonBackPage";
+            this.buttonBackPage.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackPage.TabIndex = 10;
+            this.buttonBackPage.Text = "<";
+            this.buttonBackPage.UseVisualStyleBackColor = true;
+            this.buttonBackPage.Click += new System.EventHandler(this.buttonBackPage_Click);
             // 
-            // labelOtherOption
+            // labelPage
             // 
-            this.labelOtherOption.AutoSize = true;
-            this.labelOtherOption.Location = new System.Drawing.Point(70, 58);
-            this.labelOtherOption.Name = "labelOtherOption";
-            this.labelOtherOption.Size = new System.Drawing.Size(143, 13);
-            this.labelOtherOption.TabIndex = 7;
-            this.labelOtherOption.Text = "Дополнительное значение";
-            // 
-            // textBoxOtherInfo
-            // 
-            this.textBoxOtherInfo.Location = new System.Drawing.Point(45, 81);
-            this.textBoxOtherInfo.Name = "textBoxOtherInfo";
-            this.textBoxOtherInfo.Size = new System.Drawing.Size(190, 20);
-            this.textBoxOtherInfo.TabIndex = 6;
-            // 
-            // checkBoxOtherOption
-            // 
-            this.checkBoxOtherOption.AutoSize = true;
-            this.checkBoxOtherOption.Location = new System.Drawing.Point(64, 128);
-            this.checkBoxOtherOption.Name = "checkBoxOtherOption";
-            this.checkBoxOtherOption.Size = new System.Drawing.Size(166, 17);
-            this.checkBoxOtherOption.TabIndex = 10;
-            this.checkBoxOtherOption.Text = "Дополнительные параметр";
-            this.checkBoxOtherOption.UseVisualStyleBackColor = true;
-            this.checkBoxOtherOption.Visible = false;
+            this.labelPage.AutoSize = true;
+            this.labelPage.Location = new System.Drawing.Point(157, 428);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(55, 13);
+            this.labelPage.TabIndex = 8;
+            this.labelPage.Text = "Значение";
             // 
             // MainForm
             // 
@@ -322,7 +343,9 @@ namespace SuperLauncher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.labelPage);
+            this.Controls.Add(this.buttonBackPage);
+            this.Controls.Add(this.buttonNextPage);
             this.Controls.Add(this.panelActivate);
             this.Controls.Add(this.groupButtons);
             this.Controls.Add(this.buttonAdd);
@@ -343,6 +366,7 @@ namespace SuperLauncher
             this.panelActivate.ResumeLayout(false);
             this.panelActivate.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -369,10 +393,12 @@ namespace SuperLauncher
         private System.Windows.Forms.TextBox textBoxNameCommand;
         private System.Windows.Forms.Button buttonPath;
         private System.Windows.Forms.CheckBox checkBoxOption;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBoxOtherOption;
         private System.Windows.Forms.Label labelOtherOption;
         private System.Windows.Forms.TextBox textBoxOtherInfo;
+        private System.Windows.Forms.Button buttonNextPage;
+        private System.Windows.Forms.Button buttonBackPage;
+        private System.Windows.Forms.Label labelPage;
     }
 }
 
