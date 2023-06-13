@@ -167,7 +167,7 @@ namespace SuperLauncher
             // 
             this.buttonPath.Location = new System.Drawing.Point(244, 81);
             this.buttonPath.Name = "buttonPath";
-            this.buttonPath.Size = new System.Drawing.Size(20, 23);
+            this.buttonPath.Size = new System.Drawing.Size(18, 20);
             this.buttonPath.TabIndex = 8;
             this.buttonPath.Text = "Создать";
             this.buttonPath.UseVisualStyleBackColor = true;

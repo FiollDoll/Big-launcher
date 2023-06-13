@@ -37,19 +37,21 @@ namespace SuperLauncher
             {
                 // десериализуем объект
                 using (FileStream fs = new FileStream("buttons.xml", FileMode.OpenOrCreate))
-                {
                     buttonsInScene = xmlSerializer.Deserialize(fs) as ButtonsInScene;
-                }
+                
 
                 for (int i = 0; i < buttonsInScene.buttons.Count; i++)
                 {
-                    Button button = new Button();
-                    groupButtons.Controls.Add(button);
-                    button.Name = buttonsInScene.buttons[i].name;
-                    button.Text = buttonsInScene.buttons[i].name;
-                    button.Location = new Point(buttonsInScene.buttons[i].position.x, buttonsInScene.buttons[i].position.y);
+                    if (buttonsInScene.buttons[i].position.page == 0)
+                    {
+                        Button button = new Button();
+                        groupButtons.Controls.Add(button);
+                        button.Name = buttonsInScene.buttons[i].name;
+                        button.Text = buttonsInScene.buttons[i].name;
+                        button.Location = new Point(buttonsInScene.buttons[i].position.x, buttonsInScene.buttons[i].position.y);
 
-                    button.Click += ButtonOnClick;
+                        button.Click += ButtonOnClick;
+                    }
                 }
             }
 
@@ -110,7 +112,7 @@ namespace SuperLauncher
                 Button button = new Button();
                 groupButtons.Controls.Add(button);
 
-                if (id == 0)
+                if (id == -1)
                 {
                     int buttonsCount = 0;
                     for (int i = 0; i < buttonsInScene.buttons.Count; i++)
@@ -147,13 +149,11 @@ namespace SuperLauncher
                     button.Location = new Point(buttonsInScene.buttons[id].position.x, buttonsInScene.buttons[id].position.y);
                 }
 
-
-
                 button.Click += ButtonOnClick;
 
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(ButtonsInScene));
 
-                using (FileStream fs = new FileStream(@"buttons.xml", FileMode.OpenOrCreate))
+                using (FileStream fs = new FileStream($@"buttons.xml", FileMode.OpenOrCreate))
                     xmlSerializer.Serialize(fs, buttonsInScene);
 
                 textBoxNameCommand.Text = "";
@@ -206,7 +206,7 @@ namespace SuperLauncher
             Console.WriteLine(totalAction);
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e) => CreateButton(textBoxCommand.Text, command, true);
+        private void buttonCreate_Click(object sender, EventArgs e) => CreateButton(textBoxCommand.Text, command, true, -1);
 
 
 
