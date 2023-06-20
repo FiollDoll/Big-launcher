@@ -144,5 +144,18 @@
         <page>0</page>
       </position>
     </Item>
+    <Item>
+      <id>9</id>
+      <name>ping</name>
+      <command>cmd</command>
+      <action>ping</action>
+      <optionHave>true</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>170</x>
+        <y>70</y>
+        <page>0</page>
+      </position>
+    </Item>
   </Collection>
 </ButtonsInScene>

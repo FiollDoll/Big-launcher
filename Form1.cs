@@ -212,10 +212,26 @@ namespace SuperLauncher
 
         private void buttonSubExit_Click(object sender, EventArgs e) => panelCreate.Visible = false;
 
+        private string OpenProcces(ProcessStartInfo psi)
+        {
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            Process proc = new Process();
+            proc.StartInfo = psi;
+            proc.Start();
+            var stream = proc.StandardOutput.BaseStream;
+            using (var reader = new StreamReader(stream, Encoding.GetEncoding(866)))
+            {
+                string result = reader.ReadToEnd();
+                return result;
+            }
+        }
 
         private void buttonActivate_Click(object sender, EventArgs e)
         {
             ProcessStartInfo psi;
+            string result;
             for (int i = 0; i < buttonsInScene.buttons.Count; i++)
             {
                 if (totalAction == buttonsInScene.buttons[i].name)
@@ -224,16 +240,34 @@ namespace SuperLauncher
                         break;
                     else if (buttonsInScene.buttons[i].command == "cmd")
                     {
-                        psi = new ProcessStartInfo("cmd", $@"/k {buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
-                        Process.Start(psi);
+                        try
+                        {
+                            psi = new ProcessStartInfo("cmd", $@"/c {buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
+
+                            result = OpenProcces(psi);
+                            resultText.Text = result;
+                        }
+                        catch (Exception objException)
+                        {
+                            Console.WriteLine(objException.Message);
+                        }
                         break;
                     }
-                    else if (buttonsInScene.buttons[i].command == "powerShell")
+                }
+                else if (buttonsInScene.buttons[i].command == "powerShell")
+                {
+                    try
                     {
                         psi = new ProcessStartInfo("PowerShell", $@"{buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
-                        Process.Start(psi);
-                        break;
+
+                        result = OpenProcces(psi);
+                        resultText.Text = result;
                     }
+                    catch (Exception objException)
+                    {
+                        Console.WriteLine(objException.Message);
+                    }
+                    break;
                 }
             }
             panelActivate.Visible = false;

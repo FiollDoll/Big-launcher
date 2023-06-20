@@ -57,6 +57,7 @@ namespace SuperLauncher
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.buttonBackPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
+            this.resultText = new System.Windows.Forms.TextBox();
             this.panelChoice.SuspendLayout();
             this.panelCreate.SuspendLayout();
             this.panelActivate.SuspendLayout();
@@ -136,7 +137,7 @@ namespace SuperLauncher
             this.panelCreate.Controls.Add(this.textBoxCommand);
             this.panelCreate.Controls.Add(this.buttonCreate);
             this.panelCreate.Controls.Add(this.buttonSubExit);
-            this.panelCreate.Location = new System.Drawing.Point(396, 27);
+            this.panelCreate.Location = new System.Drawing.Point(393, 27);
             this.panelCreate.Name = "panelCreate";
             this.panelCreate.Size = new System.Drawing.Size(392, 174);
             this.panelCreate.TabIndex = 6;
@@ -337,12 +338,22 @@ namespace SuperLauncher
             this.labelPage.TabIndex = 8;
             this.labelPage.Text = "Значение";
             // 
+            // resultText
+            // 
+            this.resultText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resultText.Location = new System.Drawing.Point(794, 27);
+            this.resultText.Multiline = true;
+            this.resultText.Name = "resultText";
+            this.resultText.Size = new System.Drawing.Size(160, 414);
+            this.resultText.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(966, 450);
+            this.Controls.Add(this.resultText);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.buttonBackPage);
             this.Controls.Add(this.buttonNextPage);
@@ -399,6 +410,7 @@ namespace SuperLauncher
         private System.Windows.Forms.Button buttonNextPage;
         private System.Windows.Forms.Button buttonBackPage;
         private System.Windows.Forms.Label labelPage;
+        private System.Windows.Forms.TextBox resultText;
     }
 }
 
