@@ -11,14 +11,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Buttons;
+using System.Threading;
+
 namespace SuperLauncher
 {
     public partial class MainForm : Form
     {
         public ButtonsInScene buttonsInScene = new ButtonsInScene();
+        public ProcessStartInfo PSI;
         public string totalAction;
         public string command;
         public int pageTotal;
+        public string resultat;
+        
 
         public MainForm()
         {
@@ -212,26 +217,40 @@ namespace SuperLauncher
 
         private void buttonSubExit_Click(object sender, EventArgs e) => panelCreate.Visible = false;
 
-        private string OpenProcces(ProcessStartInfo psi)
+        private void OpenProcces()
         {
-            psi.RedirectStandardOutput = true;
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
+            resultat = "";
+            PSI.RedirectStandardOutput = true;
+            PSI.UseShellExecute = false;
+            PSI.CreateNoWindow = true;
             Process proc = new Process();
-            proc.StartInfo = psi;
+            proc.StartInfo = PSI;
             proc.Start();
             var stream = proc.StandardOutput.BaseStream;
             using (var reader = new StreamReader(stream, Encoding.GetEncoding(866)))
             {
-                string result = reader.ReadToEnd();
-                return result;
+                while (!reader.EndOfStream)
+                {
+                    resultat = resultat + "\n" + reader.ReadLine();
+                    if (InvokeRequired)
+                    {
+                        Invoke((MethodInvoker)(() =>
+                        {
+                            UpdateResultat(resultat);
+                        }
+                        ));
+                    }
+                    else
+                        UpdateResultat(resultat);  
+                }
             }
         }
 
+        void UpdateResultat(string res) => resultText.Text = res;
+
         private void buttonActivate_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo psi;
-            string result;
+            resultText.Text = "";
             for (int i = 0; i < buttonsInScene.buttons.Count; i++)
             {
                 if (totalAction == buttonsInScene.buttons[i].name)
@@ -242,10 +261,10 @@ namespace SuperLauncher
                     {
                         try
                         {
-                            psi = new ProcessStartInfo("cmd", $@"/c {buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
+                            PSI = new ProcessStartInfo("cmd", $@"/c {buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
 
-                            result = OpenProcces(psi);
-                            resultText.Text = result;
+                            Thread thread1 = new Thread(OpenProcces);
+                            thread1.Start();
                         }
                         catch (Exception objException)
                         {
@@ -258,10 +277,9 @@ namespace SuperLauncher
                 {
                     try
                     {
-                        psi = new ProcessStartInfo("PowerShell", $@"{buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
-
-                        result = OpenProcces(psi);
-                        resultText.Text = result;
+                        PSI = new ProcessStartInfo("PowerShell", $@"{buttonsInScene.buttons[i].action} {textBoxInfo.Text}");
+                        Thread thread1 = new Thread(OpenProcces);
+                        thread1.Start();
                     }
                     catch (Exception objException)
                     {
