@@ -58,6 +58,8 @@ namespace SuperLauncher
             this.buttonBackPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.resultText = new System.Windows.Forms.RichTextBox();
+            this.buttonOptions = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.panelChoice.SuspendLayout();
             this.panelCreate.SuspendLayout();
             this.panelActivate.SuspendLayout();
@@ -110,7 +112,7 @@ namespace SuperLauncher
             this.panelChoice.Controls.Add(this.buttonCMD);
             this.panelChoice.Controls.Add(this.buttonExit);
             this.panelChoice.Controls.Add(this.buttonPowerShell);
-            this.panelChoice.Location = new System.Drawing.Point(396, 305);
+            this.panelChoice.Location = new System.Drawing.Point(423, 308);
             this.panelChoice.Name = "panelChoice";
             this.panelChoice.Size = new System.Drawing.Size(392, 133);
             this.panelChoice.TabIndex = 5;
@@ -137,7 +139,7 @@ namespace SuperLauncher
             this.panelCreate.Controls.Add(this.textBoxCommand);
             this.panelCreate.Controls.Add(this.buttonCreate);
             this.panelCreate.Controls.Add(this.buttonSubExit);
-            this.panelCreate.Location = new System.Drawing.Point(562, 267);
+            this.panelCreate.Location = new System.Drawing.Point(423, 267);
             this.panelCreate.Name = "panelCreate";
             this.panelCreate.Size = new System.Drawing.Size(392, 174);
             this.panelCreate.TabIndex = 6;
@@ -252,7 +254,7 @@ namespace SuperLauncher
             this.panelActivate.Controls.Add(this.textBoxInfo);
             this.panelActivate.Controls.Add(this.buttonActivate);
             this.panelActivate.Controls.Add(this.buttonActivateMenuExit);
-            this.panelActivate.Location = new System.Drawing.Point(396, 279);
+            this.panelActivate.Location = new System.Drawing.Point(423, 279);
             this.panelActivate.Name = "panelActivate";
             this.panelActivate.Size = new System.Drawing.Size(392, 133);
             this.panelActivate.TabIndex = 7;
@@ -348,12 +350,35 @@ namespace SuperLauncher
             this.resultText.TabIndex = 11;
             this.resultText.Text = "";
             // 
+            // buttonOptions
+            // 
+            this.buttonOptions.Location = new System.Drawing.Point(822, 400);
+            this.buttonOptions.Name = "buttonOptions";
+            this.buttonOptions.Size = new System.Drawing.Size(120, 23);
+            this.buttonOptions.TabIndex = 12;
+            this.buttonOptions.Text = "Настройки";
+            this.buttonOptions.UseVisualStyleBackColor = true;
+            this.buttonOptions.Click += new System.EventHandler(this.buttonOptions_Click);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(835, 423);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(94, 23);
+            this.buttonUpdate.TabIndex = 13;
+            this.buttonUpdate.Text = "Обновить";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(966, 450);
+            this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonOptions);
+            this.Controls.Add(this.panelChoice);
             this.Controls.Add(this.resultText);
             this.Controls.Add(this.panelActivate);
             this.Controls.Add(this.labelPage);
@@ -362,7 +387,6 @@ namespace SuperLauncher
             this.Controls.Add(this.groupButtons);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.panelCreate);
-            this.Controls.Add(this.panelChoice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -412,6 +436,8 @@ namespace SuperLauncher
         private System.Windows.Forms.Button buttonBackPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.RichTextBox resultText;
+        private System.Windows.Forms.Button buttonOptions;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }
 

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using Buttons;
 using System.Threading;
-
+using Opt;
 namespace SuperLauncher
 {
     public partial class MainForm : Form
@@ -61,6 +61,7 @@ namespace SuperLauncher
             }
 
             EditPage(0);
+            UpdateVisual();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -330,5 +331,29 @@ namespace SuperLauncher
         {
             checkBoxOtherOption.Visible = checkBoxOption.Checked;
         }
+
+        private void buttonOptions_Click(object sender, EventArgs e)
+        {
+            options OptionsForm = new options();
+            OptionsForm.Show();
+        }
+
+        private void UpdateVisual()
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Option));
+            Option option = new Option();
+            if (File.Exists("option.xml"))
+            {
+                // десериализуем объект
+                using (FileStream fs = new FileStream("option.xml", FileMode.OpenOrCreate))
+                    option = xmlSerializer.Deserialize(fs) as Option;
+                this.BackColor = Color.FromArgb(255, option.mainPage.r, option.mainPage.g, option.mainPage.b);
+                Color newFontColor = Color.FromArgb(255, option.mainPage.rFont, option.mainPage.gFont, option.mainPage.bFont);
+                labelPage.ForeColor = newFontColor;
+            }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e) => UpdateVisual();
+        
     }
 }

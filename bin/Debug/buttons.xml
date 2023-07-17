@@ -3,10 +3,10 @@
   <Collection>
     <Item>
       <id>0</id>
-      <name>pingHelp</name>
+      <name>ping</name>
       <command>cmd</command>
       <action>ping</action>
-      <optionHave>false</optionHave>
+      <optionHave>true</optionHave>
       <otherOptionHave>false</otherOptionHave>
       <position>
         <x>10</x>
@@ -16,10 +16,10 @@
     </Item>
     <Item>
       <id>1</id>
-      <name>ping</name>
+      <name>pingHelp</name>
       <command>cmd</command>
       <action>ping</action>
-      <optionHave>true</optionHave>
+      <optionHave>false</optionHave>
       <otherOptionHave>false</otherOptionHave>
       <position>
         <x>90</x>
@@ -28,47 +28,47 @@
       </position>
     </Item>
     <Item>
+      <id>0</id>
+      <name>C:\Users\artem\Documents\Lightshot\Screenshot_4.png</name>
+      <command>app</command>
+      <action>C:\Users\artem\Documents\Lightshot\Screenshot_4.png</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>10</x>
+        <y>20</y>
+        <page>1</page>
+      </position>
+    </Item>
+    <Item>
+      <id>1</id>
+      <name>C:\Users\artem\Documents\Lightshot\Screenshot_1.png</name>
+      <command>app</command>
+      <action>C:\Users\artem\Documents\Lightshot\Screenshot_1.png</action>
+      <optionHave>false</optionHave>
+      <otherOptionHave>false</otherOptionHave>
+      <position>
+        <x>90</x>
+        <y>20</y>
+        <page>1</page>
+      </position>
+    </Item>
+    <Item>
       <id>2</id>
-      <name>DNS google</name>
-      <command>cmd</command>
-      <action>ping  8.8.8.8 -t -l 1000</action>
+      <name>C:\Users\artem\Documents\Lightshot\Screenshot_3.png</name>
+      <command>app</command>
+      <action>C:\Users\artem\Documents\Lightshot\Screenshot_3.png</action>
       <optionHave>false</optionHave>
       <otherOptionHave>false</otherOptionHave>
       <position>
         <x>170</x>
         <y>20</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>3</id>
-      <name>ping 8.8.8.8 -t -l 1000</name>
-      <command>cmd</command>
-      <action>ping 8.8.8.8 -t -l 1000</action>
-      <optionHave>true</optionHave>
-      <otherOptionHave>true</otherOptionHave>
-      <position>
-        <x>250</x>
-        <y>20</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>4</id>
-      <name>C:\Users\artem\Videos\2023-05-21 22-42-29.mp4</name>
-      <command>app</command>
-      <action>C:\Users\artem\Videos\2023-05-21 22-42-29.mp4</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>10</x>
-        <y>70</y>
-        <page>0</page>
+        <page>1</page>
       </position>
     </Item>
     <Item>
       <id>0</id>
-      <name>123</name>
+      <name>test</name>
       <command>cmd</command>
       <action>test</action>
       <optionHave>false</optionHave>
@@ -76,111 +76,7 @@
       <position>
         <x>10</x>
         <y>20</y>
-        <page>1</page>
-      </position>
-    </Item>
-    <Item>
-      <id>1</id>
-      <name>ping</name>
-      <command>cmd</command>
-      <action>ping</action>
-      <optionHave>true</optionHave>
-      <otherOptionHave>true</otherOptionHave>
-      <position>
-        <x>90</x>
-        <y>20</y>
-        <page>1</page>
-      </position>
-    </Item>
-    <Item>
-      <id>5</id>
-      <name>123</name>
-      <command>cmd</command>
-      <action>123</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>170</x>
-        <y>20</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>6</id>
-      <name>123</name>
-      <command>cmd</command>
-      <action>123</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>250</x>
-        <y>20</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>7</id>
-      <name>333333</name>
-      <command>cmd</command>
-      <action>333333</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>10</x>
-        <y>70</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>8</id>
-      <name>3333</name>
-      <command>cmd</command>
-      <action>3333</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>90</x>
-        <y>70</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>9</id>
-      <name>ping</name>
-      <command>cmd</command>
-      <action>ping</action>
-      <optionHave>true</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>170</x>
-        <y>70</y>
-        <page>0</page>
-      </position>
-    </Item>
-    <Item>
-      <id>2</id>
-      <name>еуеу</name>
-      <command>cmd</command>
-      <action>ping</action>
-      <optionHave>true</optionHave>
-      <otherOptionHave>true</otherOptionHave>
-      <position>
-        <x>250</x>
-        <y>70</y>
-        <page>1</page>
-      </position>
-    </Item>
-    <Item>
-      <id>3</id>
-      <name>rwrw</name>
-      <command>cmd</command>
-      <action>rwrw</action>
-      <optionHave>false</optionHave>
-      <otherOptionHave>false</otherOptionHave>
-      <position>
-        <x>10</x>
-        <y>120</y>
-        <page>1</page>
+        <page>2</page>
       </position>
     </Item>
   </Collection>

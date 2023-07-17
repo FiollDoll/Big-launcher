@@ -8,3 +8,15 @@ H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csp
 H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.CoreCompileInputs.cache
 H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.exe
 H:\project\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.pdb
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.exe.config
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.exe
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\bin\Debug\SuperLauncher.pdb
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.AssemblyReference.cache
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.SuggestedBindingRedirects.cache
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.MainForm.resources
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.options.resources
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.Properties.Resources.resources
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.GenerateResource.cache
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.csproj.CoreCompileInputs.cache
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.exe
+E:\projects\SuperLauncher\SuperLauncher\SuperLauncher\obj\Debug\SuperLauncher.pdb
